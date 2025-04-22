@@ -1,0 +1,33 @@
+if __name__ == '__main__':
+    # Step 1: Read the number of commands
+    N = int(input())  # We get the number of commands from the first input
+    my_list = []  # Initialize an empty list to work with
+
+    # Step 2: Process each command
+    for _ in range(N):
+        # Read the next line and split it into parts
+        parts = input().split()
+
+        # The first part of the input is the command (e.g., 'insert', 'append', etc.)
+        command = parts[0]
+
+        # The remaining parts are the arguments needed for the command
+        # For example, in 'insert 0 5', '0' is the index and '5' is the element to insert
+        args = list(map(int, parts[1:]))  # Convert the arguments into integers
+
+        # Step 3: Use `match-case` to handle the command
+        match command:
+            case 'insert':
+                my_list.insert(args[0], args[1])
+            case 'print':
+                print(my_list)
+            case 'remove':
+                my_list.remove(args[0])
+            case 'append':
+                my_list.append(args[0])
+            case 'sort':
+                my_list.sort()
+            case 'pop':
+                my_list.pop()
+            case 'reverse':
+                my_list.reverse()

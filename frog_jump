@@ -1,0 +1,11 @@
+def cancross(stones):
+    dp={stone:[] for stone in stones}
+    dp[0].append(0)
+    for stone in stones:
+        for jump in dp[stone]:
+            for step in (jump-1,jump,jump+1):
+                if step>0 and step+stone in dp:
+                    if step not in dp[stone+step]:
+                        dp[stone+step].append(step)
+    return len(dp[stones[-1]]>0)
+    

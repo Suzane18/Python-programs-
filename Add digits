@@ -1,0 +1,13 @@
+class Solution:
+    def addDigits(self, num: int) -> int:
+        if num==0:
+            return 0
+        return 1+(num-1)%9
+'''Normal approach of the add digits 
+while num>=10:
+      n=0
+      while num>0:
+        n+=num %10
+        num//=10
+      num=n
+    return num'''

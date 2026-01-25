@@ -1,0 +1,19 @@
+class Solution:
+    def decodeString(self, s: str) -> str:
+        s1=""
+        num=0
+        st=[]
+        for i in s:
+            if i.isdigit():
+                num=num*10+int(i)
+            elif i=='[':
+                st.append((num,s1))
+                num=0
+                s1=""
+            elif i==']':
+                num1,p_s=st.pop()
+                s1=p_s+num1*s1
+            else:
+                s1+=i
+        return s1
+

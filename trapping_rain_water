@@ -1,0 +1,33 @@
+class Solution:
+    def trap(self, height: List[int]) -> int:
+        if not height or len(height) < 3:
+            return 0
+
+        n = len(height)
+        left = 0
+        right = n - 1
+        left_max = 0
+        right_max = 0
+        water_trapped = 0
+
+        while left < right:
+            # Process the side with the smaller current height because
+            # that side is the limiting factor for water trapped at the current position.
+            if height[left] < height[right]:
+                if height[left] >= left_max:
+                    # Update left_max if a new maximum is found
+                    left_max = height[left]
+                else:
+                    # Add trapped water (left_max - current height)
+                    water_trapped += left_max - height[left]
+                left += 1  # Move the left pointer inward
+            else:
+                if height[right] >= right_max:
+                    # Update right_max if a new maximum is found
+                    right_max = height[right]
+                else:
+                    # Add trapped water (right_max - current height)
+                    water_trapped += right_max - height[right]
+                right -= 1  # Move the right pointer inward
+
+        return water_trapped

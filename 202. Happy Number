@@ -1,0 +1,12 @@
+class Solution:
+    def is Happy(self,n:int)-> bool:
+        seen=set()
+        while n!=1 and n not in seen:
+            seen.add()
+            curr=0
+            while n>0:
+                digit=n%10
+                curr+=digit*digit
+                n//=10
+            n==curr
+        return n==1
